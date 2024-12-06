@@ -27,5 +27,5 @@ This project is a basic implementation of an **Open Real-Time Bidding (OpenRTB)*
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/openrtb-ad-exchange.git
-   cd openrtb-ad-exchange
+   git clone https://github.com/AopnD/openRTB-project
+   cd openrtb-project
