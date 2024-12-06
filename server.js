@@ -31,6 +31,24 @@ function getBidsFromDSPs(bidRequest){
     );
 }
 
+function getWinningBid(dspResponse){
+    let highestBid = null;
+
+    dspResponse.forEach((response)=>{
+        if(response.status === 'fulfilled'){
+            const bidResponse = response.value.data; // Assume DSP returns valid OpenRTB response
+            const { seatbid }= bidResponse;
+            if(seatbid && seatbid.length > 0){
+                const bid = seatbid[0].bid[0];
+                if(!highestBid || bid.price > highestBid.price){
+                    highestBid = bid;
+                }
+            }
+        }
+    })
+return highestBid;
+}
+
 app.post('/exchange', async(req, res) => {
     const bidRequest = req.body;
 logger.info('Inside bid request: ' + JSON.stringify(bidRequest));
