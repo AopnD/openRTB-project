@@ -19,7 +19,7 @@ const logger = winston.createLogger({
 });
 
 function validateBidRequest(bidRequest){
-    const requiredFields = ['id', 'imp', 'site'];
+    const requiredFields = ['id', 'imp', 'site']; 
     return requiredFields.every((field) => bidRequest[field] );
 };
 
@@ -59,9 +59,21 @@ if(!validateBidRequest(bidRequest)){
 
 try {
     const dspResponse = await getBidsFromDSPs(bidRequest);
-    
+    const winningBid = getWinningBid(dspResponse);
+    if(winningBid){
+        const bidResponse = {
+            id: bidRequest.id,
+            seatbid: [{ bid: [winningBid] }],
+        };
+        logger.info('Winning bid response: ', bidResponse);
+        return res.status(200).json(bidResponse);
+    }else {
+        logger.info('No valid bids received');
+        return res.status(204).send();
+    }
 } catch (error) {
-    
+    logger.error('Error handling bid request: ', error);
+    return res.status(500).json({error: 'Internal server error'});
 }
 
 });
