@@ -9,9 +9,7 @@ jest.mock('axios');
 describe('Ad Exchange API', () => {
   const validBidRequest = validReq;
   const dsp1Response = DSPResponseMock.dsp1Response;
-console.log("Hellllooo 1",dsp1Response);
   const dsp2Response = DSPResponseMock.dsp2Response;
-  console.log("Hellllooo 2",dsp1Response);
 
   afterEach(() => {
     jest.clearAllMocks();
