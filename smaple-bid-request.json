@@ -1,0 +1,5 @@
+{
+    "id": "12345",
+    "imp": [{ "id": "1", "banner": { "w": 300, "h": 250 } }],
+    "site": { "id": "67890", "domain": "example.com" }
+}
