@@ -78,7 +78,10 @@ try {
 
 });
 
+module.exports = app;
 
-app.listen(PORT, ()=> {
+if (require.main === module) {
+  app.listen(PORT, () => {
     console.log(`Ad Exchange running on ${PORT}`);
-});
+  });
+}
