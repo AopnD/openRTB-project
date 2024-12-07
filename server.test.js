@@ -1,7 +1,7 @@
 const request = require('supertest');
 const axios = require('axios');
 const app = require('./server.js');
-const validReq = require('./smaple-bid-request.json');
+const validReq = require('./sample-bid-request.json');
 const DSPResponseMock = require('./DSPResponseMock.js');
 
 jest.mock('axios');
